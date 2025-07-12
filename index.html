@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>پک یار</title>
+  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Vazirmatn', Tahoma, sans-serif;
+      background: #ecf4ef;
+      color: #1e4e2f;
+      font-size: 16px;
+      position: relative;
+    }
+    header {
+      background: #1e4e2f;
+      color: white;
+      padding: 16px;
+      text-align: center;
+      font-size: 22px;
+      font-weight: bold;
+    }
+    #menuBtn {
+      position: absolute;
+      top: 18px;
+      right: 20px;
+      font-size: 24px;
+      cursor: pointer;
+      background: none;
+      border: none;
+      color: white;
+    }
+    #menu {
+      display: none;
+      position: absolute;
+      top: 60px;
+      right: 10px;
+      background: white;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      z-index: 100;
+    }
+    #menu button {
+      display: block;
+      width: 100%;
+      padding: 10px;
+      border: none;
+      background: white;
+      text-align: right;
+      cursor: pointer;
+    }
+    #menu button:hover { background: #def1e7; }
+    form {
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    input {
+      flex: 1 1 48%;
+      padding: 12px;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      font-size: 15px;
+    }
+    input[type="text"]#listTitle {
+      flex: 1 1 100%;
+    }
+    button.submit {
+      align-self: center;
+      padding: 10px 40px;
+      font-size: 16px;
+      background: #1e4e2f;
+      color: white;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+    }
+    table {
+      width: 95%;
+      margin: 20px auto;
+      border-collapse: collapse;
+      background: white;
+      text-align: center;
+      font-size: 15px;
+    }
+    th, td {
+      border: 1px solid #1e4e2f;
+      padding: 10px;
+    }
+    th {
+      background: #1e4e2f;
+      color: white;
+    }
+    .footer {
+      margin: 15px 5%;
+      font-size: 15px;
+      text-align: center;
+    }
+    #titleDisplay {
+      text-align: center;
+      font-size: 20px;
+      font-weight: bold;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  پک یار
+  <button id="menuBtn">☰</button>
+</header>
+
+<div id="menu">
+  <button onclick="newPacking()">🆕 پکینگ جدید</button>
+  <button onclick="loadPacking()">📂 باز کردن ذخیره</button>
+  <button onclick="savePacking()">💾 ذخیره</button>
+  <button onclick="saveJPEG()">🖼️ ذخیره عکس</button>
+  <button onclick="savePDF()">🧾 ذخیره PDF</button>
+</div>
+
+<form id="packingForm">
+  <div class="row">
+    <input type="text" id="listTitle" placeholder="عنوان لیست" />
+  </div>
+  <div class="row">
+    <input type="text" inputmode="numeric" pattern="[0-9\-\.]*" id="rowNumber" placeholder="شماره ردیف" />
+    <input type="text" inputmode="numeric" pattern="[0-9\-\.]*" id="height" placeholder="ارتفاع" />
+  </div>
+  <div class="row">
+    <input type="text" inputmode="numeric" pattern="[0-9\-\.]*" id="width" placeholder="عرض" />
+    <input type="text" inputmode="numeric" pattern="[0-9\-\.]*" id="length" placeholder="طول" />
+  </div>
+  <div class="row">
+    <input type="text" inputmode="numeric" pattern="[0-9\-\.]*" id="count" placeholder="تعداد" />
+  </div>
+  <button type="submit" class="submit">ثبت</button>
+</form>
+
+<div id="outputArea">
+  <div id="titleDisplay"></div>
+  <table>
+    <thead>
+      <tr><th>متراژ</th><th>تعداد</th><th>طول</th><th>عرض</th><th>ارتفاع</th><th>ردیف</th></tr>
+    </thead>
+    <tbody id="tableBody"></tbody>
+  </table>
+  <div class="footer">جمع متراژ: <span id="totalVolume">0</span></div>
+</div>
+
+<!-- اسکریپت‌ها (فقط اسکلت، بقیه رو می‌تونی از نسخه قبل کپی کنی یا من کامل کنم) -->
+
+</body>
+</html>
